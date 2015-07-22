@@ -1,0 +1,33 @@
+<div class="container" ng-keypress="">
+   <div class="page-header">
+      <h1>Profiles</h1>
+   </div>
+   <div class="row">
+      <div class="col-md-12">
+         <h4>Project: </h4>
+         <form class="form-horizontal">
+            <div class="form-group">
+               <div class="col-sm-11">
+                  <input placeholder="Enter the project name" ng-model="searchProject" typeahead="project as project.name for project in projects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+                  <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+               </div>
+               <a href="javascript:void(0);" class="btn btn-default btn-prime" ng-click="loadProfile()">Fetch</a>
+            </div>
+         </form>
+      </div>
+   </div>
+   <div class="row gridwrapper" ng-show="!isGridEmpty">
+      <div class="col-md-12">
+         <div ag-grid="angularGrid" ng-style="{width: width, height: height}" ng-class="style" class="odsgrid"></div>
+      </div>
+      <div class="col-md-12 text-right" style="margin-top: 20px"><a href="javascript:void(0);" class="btn btn-default btn-prime" ng-click="addNewRow()">Add row</a> <a href="javascript:void(0);" class="btn btn-default btn-prime" ng-click="save()">save</a></div>
+   </div>
+   <div class="row" ng-show="isGridEmpty">
+        <div class="col-md-12">
+          <div class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong> No Profiles found.</strong>
+          </div>
+        </div>
+   </div>
+</div>
